@@ -7,7 +7,8 @@
     "maki": "scripts/maki.js"
   },
   "scripts": {
-    "coverage": "NODE_ENV=test istanbul cover _mocha tests -- --recursive",
+    "compile": "node scripts/build.js",
+    "coverage": "nyc mocha tests",
     "start": "node examples/app.js",
     "test": "NODE_ENV=test mocha tests"
   },
@@ -38,5 +39,16 @@
   "devDependencies": {
     "maki-cms-local": "0.0.1",
     "mocha": "^6.1.4"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "types/**/*.js"
+    ],
+    "exclude": [
+      "tests",
+      "input"
+    ],
+    "report-dir": "./reports/code-coverage"
   }
 }

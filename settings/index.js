@@ -95,7 +95,7 @@ module.exports = {
   },
   views: {
     plugins: {
-      'moment': require('moment')
+      /* 'moment': require('moment') */
     },
     client: {
       render: process.env.MAKI_VIEWS_CLIENT_RENDER || false
