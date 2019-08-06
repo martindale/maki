@@ -1,0 +1,11 @@
+{
+  "title": "Maki",
+  "resources": {
+    "Example": {
+      "components": {
+        "list": "maki-example-list",
+        "view": "maki-example-view"
+      }
+    }
+  }
+}

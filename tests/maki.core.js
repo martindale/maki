@@ -1,5 +1,7 @@
 'use strict';
 
+// require('debug-trace')({ always: true });
+
 const assert = require('assert');
 
 const Maki = require('../');
@@ -25,7 +27,7 @@ describe('Maki', function () {
       port: 9999
     });
 
-    app.define('Example', {
+    await app.define('Example', {
       name: 'Example',
       components: {
         'list': 'maki-example-list',

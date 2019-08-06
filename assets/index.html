@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/styles/screen.css" />
   <link rel="stylesheet" type="text/css" href="/styles/semantic.css" />
 </head>
-<body class="ui inverted" data-bind="5c2e91d4b347a0b2871933278b44f739ee4ac35b132799f0531122c9bcadac99">
+<body class="ui inverted" data-bind="5adb7b21521671b2728018c58d4cc311d00aebb62bb9a38e9fe26fb10bc42323">
   <fabric-application route="/" integrity="sha256-x3baoVHFQyDyD3GXXTA/QNIrAdx1g+ln2figIDMPxyY=" class="window">
     <header>
       <!-- <fabric-grid-row id="menu"><fabric-menu class="ui fixed inverted menu">
@@ -41,23 +41,6 @@
       </fabric-browser>
     </fabric-grid-row>
     <footer>
-      <fabric-grid-row class="ui inverted vertical footer segment">
-        <div class="ui container">
-          <h2>Debug Information</h2>
-          <fabric-grid-row>
-            <fabric-channel></fabric-channel>
-            <nav data-bind="controls">
-              <button data-action="_generateIdentity" class="ui button">create new identity</button>
-              <button data-action="_toggleFullscreen" class="ui button">fullscreen</button>
-            </nav>
-            <div>
-              <p><code>Version:</code> <code>undefined</code></p>
-              <p><code>Clock:</code> <code data-bind="/clock">undefined</code></p>
-              <p><strong>Source:</strong> <a href="https://github.com/FabricLabs/web">fabric:github.com/FabricLabs/web</a>
-            </div>
-          </fabric-grid-row>
-        </div>
-      </fabric-grid-row>
       <!-- [0]: README [dot] md -->
       <!--
     # RPG `@fabric/rpg`
@@ -84,7 +67,7 @@
     </footer>
     <div id="ephemeral-content"></div>
     <!-- TODO: rollup semantic into build process -->
-    <!-- <script type="text/javascript" src="/scripts/semantic.min.js"></script> -->
+    <script type="text/javascript" src="/scripts/semantic.min.js"></script>
     <script type="text/javascript" src="/scripts/index.min.js"></script>
   </fabric-application>
 </body>
