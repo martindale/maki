@@ -9,7 +9,7 @@
   "scripts": {
     "build:scripts": "webpack scripts/index.js",
     "build:ui": "cd components/semantic && gulp build && cp dist/semantic.js ../../assets/scripts/semantic.js && cp dist/semantic.css ../../assets/styles/semantic.css && cd ../..",
-    "compile": "node scripts/build.js",
+    "compile": "npm run build:ui && npm run build:scripts && node scripts/build.js",
     "coverage": "nyc mocha tests",
     "start": "npm run compile && node examples/app.js",
     "test": "NODE_ENV=test mocha tests"
