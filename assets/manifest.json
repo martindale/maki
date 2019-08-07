@@ -1,0 +1,10 @@
+{
+  "index.js": {
+    "src": "/index.min.js",
+    "integrity": "sha256-jzEGQQy2IkLp3nJM+VOVMrRNiOKA4Iwwo3md9Z9qMjM= sha384-wOn8MbOFtpPtktOeKEmyTscwmnO/ttYrUCXelU+nfD2QJbhChUPKc6tW8c7VyuOO sha512-j8FTtC4CsayYbTu1MXHaw9MKAIwr4MVbJjnNRpDfGUuqJ7QY+DdgdbUnoIFUQy+U0quWCMFf2XO/eEWScxzE1g=="
+  },
+  "main.js": {
+    "src": "/index.min.js",
+    "integrity": "sha256-jzEGQQy2IkLp3nJM+VOVMrRNiOKA4Iwwo3md9Z9qMjM= sha384-wOn8MbOFtpPtktOeKEmyTscwmnO/ttYrUCXelU+nfD2QJbhChUPKc6tW8c7VyuOO sha512-j8FTtC4CsayYbTu1MXHaw9MKAIwr4MVbJjnNRpDfGUuqJ7QY+DdgdbUnoIFUQy+U0quWCMFf2XO/eEWScxzE1g=="
+  }
+}

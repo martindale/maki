@@ -8,7 +8,7 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './scripts/index.js',
   // devtool: 'source-map',
   target: 'web',
@@ -27,7 +27,7 @@ module.exports = {
     new WebpackAssetsManifest({
       publicPath: '/scripts',
       integrity: true,
-      output: 'manifest.json',
+      output: '../manifest.json',
       merge: true
     }),
     new ServiceWorkerWebpackPlugin({
