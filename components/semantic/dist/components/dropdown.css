@@ -81,7 +81,7 @@
  Dropdown Icon
 ---------------*/
 
-.ui.dropdown > .dropdown.icon {
+.ui.dropdown > .dropdown.icon.icon {
   position: relative;
   width: auto;
   font-size: 0.85714286em;
@@ -764,6 +764,16 @@ select.ui.dropdown {
 }
 .ui.multiple.dropdown > .label ~ .text {
   display: none;
+}
+.ui.multiple.dropdown > .label:not(.image) > img:not(.centered) {
+  margin-right: 0.78571429rem;
+}
+.ui.multiple.dropdown > .label:not(.image) > img.ui:not(.avatar) {
+  margin-bottom: 0.39285714rem;
+}
+.ui.multiple.dropdown > .image.label img {
+  margin: -0.35714286em 0.78571429em -0.35714286em -0.78571429em;
+  height: 1.71428571em;
 }
 
 /*-----------------

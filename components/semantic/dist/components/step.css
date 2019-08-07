@@ -371,6 +371,9 @@
 }
 
 /* Active Arrow */
+.ui.steps .step:after {
+  display: block;
+}
 .ui.steps .active.step:after {
   display: block;
 }

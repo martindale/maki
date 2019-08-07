@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.6
+ * # Fomantic UI - 2.7.7
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -6082,94 +6082,94 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
 
 .ui.container {
   display: block;
-  max-width: 100% !important;
+  max-width: 100%;
 }
 
 /* Mobile */
 
 @media only screen and (max-width: 767.98px) {
-  .ui.container {
-    width: auto !important;
-    margin-left: 1em !important;
-    margin-right: 1em !important;
+  .ui.ui.ui.container:not(.fluid) {
+    width: auto;
+    margin-left: 1em;
+    margin-right: 1em;
   }
 
-  .ui.grid.container {
-    width: auto !important;
+  .ui.ui.grid.container {
+    width: auto;
   }
 
-  .ui.relaxed.grid.container {
-    width: auto !important;
+  .ui.ui.relaxed.grid.container {
+    width: auto;
   }
 
-  .ui.very.relaxed.grid.container {
-    width: auto !important;
+  .ui.ui.very.relaxed.grid.container {
+    width: auto;
   }
 }
 
 /* Tablet */
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
-  .ui.container {
+  .ui.ui.ui.container:not(.fluid) {
     width: 723px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .ui.grid.container {
-    width: calc(723px + 2rem) !important;
+  .ui.ui.grid.container {
+    width: calc(723px + 2rem);
   }
 
-  .ui.relaxed.grid.container {
-    width: calc(723px + 3rem) !important;
+  .ui.ui.relaxed.grid.container {
+    width: calc(723px + 3rem);
   }
 
-  .ui.very.relaxed.grid.container {
-    width: calc(723px + 5rem) !important;
+  .ui.ui.very.relaxed.grid.container {
+    width: calc(723px + 5rem);
   }
 }
 
 /* Small Monitor */
 
 @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
-  .ui.container {
+  .ui.ui.ui.container:not(.fluid) {
     width: 933px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .ui.grid.container {
-    width: calc(933px + 2rem) !important;
+  .ui.ui.grid.container {
+    width: calc(933px + 2rem);
   }
 
-  .ui.relaxed.grid.container {
-    width: calc(933px + 3rem) !important;
+  .ui.ui.relaxed.grid.container {
+    width: calc(933px + 3rem);
   }
 
-  .ui.very.relaxed.grid.container {
-    width: calc(933px + 5rem) !important;
+  .ui.ui.very.relaxed.grid.container {
+    width: calc(933px + 5rem);
   }
 }
 
 /* Large Monitor */
 
 @media only screen and (min-width: 1200px) {
-  .ui.container {
+  .ui.ui.ui.container:not(.fluid) {
     width: 1127px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .ui.grid.container {
-    width: calc(1127px + 2rem) !important;
+  .ui.ui.grid.container {
+    width: calc(1127px + 2rem);
   }
 
-  .ui.relaxed.grid.container {
-    width: calc(1127px + 3rem) !important;
+  .ui.ui.relaxed.grid.container {
+    width: calc(1127px + 3rem);
   }
 
-  .ui.very.relaxed.grid.container {
-    width: calc(1127px + 5rem) !important;
+  .ui.ui.very.relaxed.grid.container {
+    width: calc(1127px + 5rem);
   }
 }
 
@@ -6181,7 +6181,7 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
 
 .ui.text.container {
   font-family: 'Arvo', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  max-width: 700px !important;
+  max-width: 700px;
   line-height: 1.5;
   font-size: 1.14285714rem;
 }
@@ -6573,6 +6573,8 @@ i.flag:not(.icon):before {
 /*******************************
          Theme Overrides
 *******************************/
+
+/*rtl:begin:ignore*/
 
 i.flag.ad:before,
 i.flag.andorra:before {
@@ -7803,6 +7805,8 @@ i.flag.zw:before,
 i.flag.zimbabwe:before {
   background-position: -108px -390px;
 }
+
+/*rtl:end:ignore*/
 
 /* Flag Sprite Based On http://www.famfamfam.com/lab/icons/flags/ */
 
@@ -10523,7 +10527,7 @@ i.icons .inverted.corner.icon {
 }
 
 /*
-* Font Awesome 5.8.2 by @fontawesome [https://fontawesome.com]
+* Font Awesome 5.9.0 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -10659,10 +10663,6 @@ i.icon.angle.double.up:before {
   content: "\f102";
 }
 
-i.icon.angle.down:before {
-  content: "\f107";
-}
-
 i.icon.angle.left:before {
   content: "\f104";
 }
@@ -10673,6 +10673,10 @@ i.icon.angle.right:before {
 
 i.icon.angle.up:before {
   content: "\f106";
+}
+
+i.icon.angle.down:before {
+  content: "\f107";
 }
 
 i.icon.angry:before {
@@ -10803,6 +10807,14 @@ i.icon.balance.scale:before {
   content: "\f24e";
 }
 
+i.icon.balance.scale.left:before {
+  content: "\f515";
+}
+
+i.icon.balance.scale.right:before {
+  content: "\f516";
+}
+
 i.icon.ban:before {
   content: "\f05e";
 }
@@ -10879,6 +10891,10 @@ i.icon.bicycle:before {
   content: "\f206";
 }
 
+i.icon.biking:before {
+  content: "\f84a";
+}
+
 i.icon.binoculars:before {
   content: "\f1e5";
 }
@@ -10949,6 +10965,18 @@ i.icon.book.reader:before {
 
 i.icon.bookmark:before {
   content: "\f02e";
+}
+
+i.icon.border.all:before {
+  content: "\f84c";
+}
+
+i.icon.border.none:before {
+  content: "\f850";
+}
+
+i.icon.border.style:before {
+  content: "\f853";
 }
 
 i.icon.bowling.ball:before {
@@ -11775,6 +11803,10 @@ i.icon.eye.slash:before {
   content: "\f070";
 }
 
+i.icon.fan:before {
+  content: "\f863";
+}
+
 i.icon.fast.backward:before {
   content: "\f049";
 }
@@ -12419,6 +12451,10 @@ i.icon.icicles:before {
   content: "\f7ad";
 }
 
+i.icon.icons:before {
+  content: "\f86d";
+}
+
 i.icon.id.badge:before {
   content: "\f2c1";
 }
@@ -13027,6 +13063,10 @@ i.icon.phone:before {
   content: "\f095";
 }
 
+i.icon.phone.alternate:before {
+  content: "\f879";
+}
+
 i.icon.phone.slash:before {
   content: "\f3dd";
 }
@@ -13035,8 +13075,16 @@ i.icon.phone.square:before {
   content: "\f098";
 }
 
+i.icon.phone.square.alternate:before {
+  content: "\f87b";
+}
+
 i.icon.phone.volume:before {
   content: "\f2a0";
+}
+
+i.icon.photo.video:before {
+  content: "\f87c";
 }
 
 i.icon.piggy.bank:before {
@@ -13225,6 +13273,10 @@ i.icon.redo.alternate:before {
 
 i.icon.registered:before {
   content: "\f25d";
+}
+
+i.icon.remove.format:before {
+  content: "\f87d";
 }
 
 i.icon.reply:before {
@@ -13555,16 +13607,32 @@ i.icon.sort.alphabet.down:before {
   content: "\f15d";
 }
 
+i.icon.sort.alphabet.down.alternate:before {
+  content: "\f881";
+}
+
 i.icon.sort.alphabet.up:before {
   content: "\f15e";
+}
+
+i.icon.sort.alphabet.up.alternate:before {
+  content: "\f882";
 }
 
 i.icon.sort.amount.down:before {
   content: "\f160";
 }
 
+i.icon.sort.amount.down.alternate:before {
+  content: "\f884";
+}
+
 i.icon.sort.amount.up:before {
   content: "\f161";
+}
+
+i.icon.sort.amount.up.alternate:before {
+  content: "\f885";
 }
 
 i.icon.sort.down:before {
@@ -13575,8 +13643,16 @@ i.icon.sort.numeric.down:before {
   content: "\f162";
 }
 
+i.icon.sort.numeric.down.alternate:before {
+  content: "\f886";
+}
+
 i.icon.sort.numeric.up:before {
   content: "\f163";
+}
+
+i.icon.sort.numeric.up.alternate:before {
+  content: "\f887";
 }
 
 i.icon.sort.up:before {
@@ -13589,6 +13665,10 @@ i.icon.spa:before {
 
 i.icon.space.shuttle:before {
   content: "\f197";
+}
+
+i.icon.spell.check:before {
+  content: "\f891";
 }
 
 i.icon.spider:before {
@@ -14217,6 +14297,10 @@ i.icon.video.slash:before {
 
 i.icon.vihara:before {
   content: "\f6a7";
+}
+
+i.icon.voicemail:before {
+  content: "\f897";
 }
 
 i.icon.volleyball.ball:before {
@@ -17403,11 +17487,6 @@ i.icon.neos:before {
 
 i.icon.nimblr:before {
   content: "\f5a8";
-  font-family: 'brand-icons';
-}
-
-i.icon.nintendo.switch:before {
-  content: "\f418";
   font-family: 'brand-icons';
 }
 
@@ -26605,7 +26684,7 @@ img.ui.image {
 *******************************/
 
 .ui.hidden.images,
-.ui.hidden.image {
+.ui.ui.hidden.image {
   display: none;
 }
 
@@ -27686,12 +27765,11 @@ a.ui.label {
 
 /* Padding on next content after a label */
 
-.ui.top.attached.label:first-child + :not(.attached),
-.ui.top.attached.label + [class*="right floated"] + * {
+.ui.top.attached.label ~ :first-of-type:not(.attached) {
   margin-top: 2rem !important;
 }
 
-.ui.bottom.attached.label:first-child ~ :last-child:not(.attached) {
+.ui.bottom.attached.label ~ :last-child:not(.attached) {
   margin-top: 0;
   margin-bottom: 2rem !important;
 }
@@ -33791,6 +33869,10 @@ ol.ui.suffixed.list li:before,
 
 /* Active Arrow */
 
+.ui.steps .step:after {
+  display: block;
+}
+
 .ui.steps .active.step:after {
   display: block;
 }
@@ -34471,6 +34553,10 @@ ol.ui.suffixed.list li:before,
     Checkbox margin
 ---------------------*/
 
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) label + .ui.ui.checkbox {
+  margin-top: 0.7em;
+}
+
 .ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.checkbox {
   margin-top: 2.41428571em;
 }
@@ -34845,10 +34931,10 @@ ol.ui.suffixed.list li:before,
 
 /* On Field(s) */
 
-.ui.form .fields.error .field label,
-.ui.form .field.error label,
-.ui.form .fields.error .field .input,
-.ui.form .field.error .input {
+.ui.ui.form .fields.error .field label,
+.ui.ui.form .field.error label,
+.ui.ui.form .fields.error .field .input,
+.ui.ui.form .field.error .input {
   color: #9F3A38;
 }
 
@@ -41621,8 +41707,9 @@ Floated Menu / Item
   background: transparent;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: -1px -1px 0 1px #FFFFFF;
-  box-shadow: -1px -1px 0 1px #FFFFFF;
+  -webkit-box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
+  box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
+  -moz-transform: scale(1);
 }
 
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
@@ -41630,20 +41717,9 @@ Floated Menu / Item
   background: transparent;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: -1px 1px 0 1px #FFFFFF;
-  box-shadow: -1px 1px 0 1px #FFFFFF;
-}
-
-/* Remove Border */
-
-.ui.celled.definition.table > thead:not(.full-width) > tr > th:first-child {
-  -webkit-box-shadow: 0 -1px 0 1px #FFFFFF;
-  box-shadow: 0 -1px 0 1px #FFFFFF;
-}
-
-.ui.celled.definition.table > tfoot:not(.full-width) > tr > th:first-child {
-  -webkit-box-shadow: 0 1px 0 1px #FFFFFF;
-  box-shadow: 0 1px 0 1px #FFFFFF;
+  -webkit-box-shadow: -0.1em 0.2em 0 0.1em #FFFFFF;
+  box-shadow: -0.1em 0.2em 0 0.1em #FFFFFF;
+  -moz-transform: scale(1);
 }
 
 /* Highlight Defining Column */
@@ -47118,7 +47194,7 @@ a.inverted.ui.card:hover,
   vertical-align: baseline;
   font-style: normal;
   min-height: 17px;
-  font-size: 1rem;
+  font-size: 1em;
   line-height: 17px;
   min-width: 17px;
 }
@@ -47836,6 +47912,178 @@ a.inverted.ui.card:hover,
   background-color: #a3c1cb !important;
 }
 
+/*--------------------
+        Size
+---------------------*/
+
+.ui.mini.checkbox {
+  font-size: 0.78571429em;
+}
+
+.ui.tiny.checkbox {
+  font-size: 0.85714286em;
+}
+
+.ui.small.checkbox {
+  font-size: 0.92857143em;
+}
+
+.ui.large.checkbox {
+  font-size: 1.14285714em;
+}
+
+.ui.large.form .checkbox:not(.slider):not(.toggle):not(.radio) .box:after,
+.ui.large.checkbox:not(.slider):not(.toggle):not(.radio) .box:after,
+.ui.large.form .checkbox:not(.slider):not(.toggle):not(.radio) .box:before,
+.ui.large.checkbox:not(.slider):not(.toggle):not(.radio) .box:before,
+.ui.large.form .checkbox:not(.slider):not(.toggle):not(.radio) label:after,
+.ui.large.checkbox:not(.slider):not(.toggle):not(.radio) label:after,
+.ui.large.form .checkbox:not(.slider):not(.toggle):not(.radio) label:before,
+.ui.large.checkbox:not(.slider):not(.toggle):not(.radio) label:before {
+  -webkit-transform: scale(1.14285714);
+  transform: scale(1.14285714);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.ui.large.form .checkbox.radio .box:before,
+.ui.large.checkbox.radio .box:before,
+.ui.large.form .checkbox.radio label:before,
+.ui.large.checkbox.radio label:before {
+  -webkit-transform: scale(1.14285714);
+  transform: scale(1.14285714);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.ui.large.form .checkbox.radio .box:after,
+.ui.large.checkbox.radio .box:after,
+.ui.large.form .checkbox.radio label:after,
+.ui.large.checkbox.radio label:after {
+  -webkit-transform: scale(0.57142857);
+  transform: scale(0.57142857);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+  left: 0.33571429em;
+}
+
+.ui.big.checkbox {
+  font-size: 1.28571429em;
+}
+
+.ui.big.form .checkbox:not(.slider):not(.toggle):not(.radio) .box:after,
+.ui.big.checkbox:not(.slider):not(.toggle):not(.radio) .box:after,
+.ui.big.form .checkbox:not(.slider):not(.toggle):not(.radio) .box:before,
+.ui.big.checkbox:not(.slider):not(.toggle):not(.radio) .box:before,
+.ui.big.form .checkbox:not(.slider):not(.toggle):not(.radio) label:after,
+.ui.big.checkbox:not(.slider):not(.toggle):not(.radio) label:after,
+.ui.big.form .checkbox:not(.slider):not(.toggle):not(.radio) label:before,
+.ui.big.checkbox:not(.slider):not(.toggle):not(.radio) label:before {
+  -webkit-transform: scale(1.28571429);
+  transform: scale(1.28571429);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.ui.big.form .checkbox.radio .box:before,
+.ui.big.checkbox.radio .box:before,
+.ui.big.form .checkbox.radio label:before,
+.ui.big.checkbox.radio label:before {
+  -webkit-transform: scale(1.28571429);
+  transform: scale(1.28571429);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.ui.big.form .checkbox.radio .box:after,
+.ui.big.checkbox.radio .box:after,
+.ui.big.form .checkbox.radio label:after,
+.ui.big.checkbox.radio label:after {
+  -webkit-transform: scale(0.64285714);
+  transform: scale(0.64285714);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+  left: 0.37142857em;
+}
+
+.ui.huge.checkbox {
+  font-size: 1.42857143em;
+}
+
+.ui.huge.form .checkbox:not(.slider):not(.toggle):not(.radio) .box:after,
+.ui.huge.checkbox:not(.slider):not(.toggle):not(.radio) .box:after,
+.ui.huge.form .checkbox:not(.slider):not(.toggle):not(.radio) .box:before,
+.ui.huge.checkbox:not(.slider):not(.toggle):not(.radio) .box:before,
+.ui.huge.form .checkbox:not(.slider):not(.toggle):not(.radio) label:after,
+.ui.huge.checkbox:not(.slider):not(.toggle):not(.radio) label:after,
+.ui.huge.form .checkbox:not(.slider):not(.toggle):not(.radio) label:before,
+.ui.huge.checkbox:not(.slider):not(.toggle):not(.radio) label:before {
+  -webkit-transform: scale(1.42857143);
+  transform: scale(1.42857143);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.ui.huge.form .checkbox.radio .box:before,
+.ui.huge.checkbox.radio .box:before,
+.ui.huge.form .checkbox.radio label:before,
+.ui.huge.checkbox.radio label:before {
+  -webkit-transform: scale(1.42857143);
+  transform: scale(1.42857143);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.ui.huge.form .checkbox.radio .box:after,
+.ui.huge.checkbox.radio .box:after,
+.ui.huge.form .checkbox.radio label:after,
+.ui.huge.checkbox.radio label:after {
+  -webkit-transform: scale(0.71428571);
+  transform: scale(0.71428571);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+  left: 0.40714286em;
+}
+
+.ui.massive.checkbox {
+  font-size: 1.71428571em;
+}
+
+.ui.massive.form .checkbox:not(.slider):not(.toggle):not(.radio) .box:after,
+.ui.massive.checkbox:not(.slider):not(.toggle):not(.radio) .box:after,
+.ui.massive.form .checkbox:not(.slider):not(.toggle):not(.radio) .box:before,
+.ui.massive.checkbox:not(.slider):not(.toggle):not(.radio) .box:before,
+.ui.massive.form .checkbox:not(.slider):not(.toggle):not(.radio) label:after,
+.ui.massive.checkbox:not(.slider):not(.toggle):not(.radio) label:after,
+.ui.massive.form .checkbox:not(.slider):not(.toggle):not(.radio) label:before,
+.ui.massive.checkbox:not(.slider):not(.toggle):not(.radio) label:before {
+  -webkit-transform: scale(1.71428571);
+  transform: scale(1.71428571);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.ui.massive.form .checkbox.radio .box:before,
+.ui.massive.checkbox.radio .box:before,
+.ui.massive.form .checkbox.radio label:before,
+.ui.massive.checkbox.radio label:before {
+  -webkit-transform: scale(1.71428571);
+  transform: scale(1.71428571);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+
+.ui.massive.form .checkbox.radio .box:after,
+.ui.massive.checkbox.radio .box:after,
+.ui.massive.form .checkbox.radio label:after,
+.ui.massive.checkbox.radio label:after {
+  -webkit-transform: scale(0.85714286);
+  transform: scale(0.85714286);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+  left: 0.47857143em;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -48502,7 +48750,7 @@ body.dimmable > .dimmer {
  Dropdown Icon
 ---------------*/
 
-.ui.dropdown > .dropdown.icon {
+.ui.dropdown > .dropdown.icon.icon {
   position: relative;
   width: auto;
   font-size: 0.85714286em;
@@ -49262,6 +49510,19 @@ select.ui.dropdown {
 
 .ui.multiple.dropdown > .label ~ .text {
   display: none;
+}
+
+.ui.multiple.dropdown > .label:not(.image) > img:not(.centered) {
+  margin-right: 0.78571429rem;
+}
+
+.ui.multiple.dropdown > .label:not(.image) > img.ui:not(.avatar) {
+  margin-bottom: 0.39285714rem;
+}
+
+.ui.multiple.dropdown > .image.label img {
+  margin: -0.35714286em 0.78571429em -0.35714286em -0.78571429em;
+  height: 1.71428571em;
 }
 
 /*-----------------
