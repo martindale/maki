@@ -3,13 +3,16 @@ var config = require('./config');
 var Maki = require('./lib/Maki');
 var maki = new Maki( config );
 
-/*var Passport = require('maki-passport-local');
+var Passport = require('maki-passport-local');
 var passport = new Passport({
   resource: 'Person'
 });
 maki.use( passport );
 
-*/
+maki.use(require('maki-client-level'));
+maki.use(require('maki-client-polymer'));
+maki.use(require('maki-client-markdown'));
+maki.use(require('maki-client-search'));
 
 var AuthSlack = require('maki-auth-slack');
 var authSlack = new AuthSlack({
@@ -21,30 +24,61 @@ maki.use(authSlack);
 
 var CMS = require('maki-cms-local');
 var cms = new CMS({
+  public: true,
+  icon: 'book',
+  name: 'Doc',
+  description: 'Resources and reference materials.',
+  source: __dirname + '/docs',
+  components: {
+    query: 'maki-api-index',
+    get: 'maki-doc-view'
+  },
   base: '/docs',
   path: '/docs',
   view: process.env.PWD + '/views/page'
 });
 
+var guides = new CMS({
+  name: 'Guide',
+  base: '/guides',
+  path: '/source/guides',
+  view: process.env.PWD + '/views/page',
+  components: {
+    masthead: 'maki-page-header',
+    get: 'maki-page-view'
+  }
+});
+
 var examples = new CMS({
+  name: 'Example',
   base: '/examples',
   path: '/source/examples',
-  view: process.env.PWD + '/views/page'
+  icon: 'idea',
+  public: true,
+  view: process.env.PWD + '/views/page',
+  components: {
+    masthead: 'maki-page-header',
+    query: 'maki-example-showcase',
+    get: 'maki-page-view',
+  }
 });
 
 var tutorials = new CMS({
+  name: 'Tutorial',
   base: '/tutorials',
   path: '/source/tutorials',
   view: process.env.PWD + '/views/page'
 });
 
 var snippets = new CMS({
+  name: 'Snippet',
   base: '/snippets',
   path: '/source/snippets',
   view: process.env.PWD + '/views/page'
 });
 
 var developers = new CMS({
+  name: 'Developer',
   base: '/developers',
   path: '/source/developers',
   view: process.env.PWD + '/views/page'
@@ -56,11 +90,29 @@ var auth = new Auth({
 });
 
 maki.use(cms);
+maki.use(guides);
 maki.use(examples);
 maki.use(tutorials);
 maki.use(snippets);
 maki.use(developers);
 maki.use(auth);
+
+// TODO: create relative time system that uses absolute values for static events
+// but relative time for recurring events
+// i.e., an `end` time of 86400000 would be an event that consistently lasts one
+// full day from a relative `start` time of 0, with a `recurrence` value of any
+// enumerable value.
+var Event = maki.define('Event', {
+  icon: 'calendar',
+  description: 'A range of time',
+  attributes: {
+    name: { type: String },
+    start: { type: Date },
+    end: { type: Date },
+    // TODO: consider creating a "Recurrence" object that also stores behavior
+    recurrence: { type: String , enum: ['daily', 'weekly', 'monthly', 'yearly'] }
+  }
+})
 
 var Topic = maki.define('Topic', {
   public: false,
@@ -68,6 +120,10 @@ var Topic = maki.define('Topic', {
   handle: 'Conversations',
   masthead: '/img/sunrise.jpg',
   description: 'Topics being discussed by the Maki community.',
+  components: {
+    query: 'maki-topic-browser',
+    get: 'maki-chat-interface'
+  },
   attributes: {
     id: { type: String , max: 80 , required: true },
     name: { type: String , max: 80 , required: true , slug: true },
@@ -75,7 +131,10 @@ var Topic = maki.define('Topic', {
     topic: { type: String },
     created: { type: Date , default: Date.now },
     creator: { type: String , ref: 'Person' },
-    people: [ { type: String , ref: 'Person' }],
+    authors: [ { type: String , ref: 'Person' } ],
+    subscribers: [ { type: String , ref: 'Person' } ],
+    // TODO: write migration scripts
+    //people: [ { type: String , ref: 'Person' } ],
     stats: {
       subscribers: { type: Number , default: 0 },
       messages: { type: Number , default: 0 },
@@ -138,15 +197,18 @@ var Message = maki.define('Message', {
   icon: 'speech',
   description: 'Messages about the Topics under discussion.',
   public: false,
+  components: {
+    'query': 'maki-chat-interface'
+  },
   attributes: {
     // TODO: make this a special field at the Fabric layer, and make it part of
     // the API.  Remove from schema definition, potentially don't even have
     // access to it within application scope.  External anyway, right?
     '@context': { type: String },
-    id: { type: String , max: 80 , required: true , slug: true },
+    id: { type: String , max: 80 , required: true , slug: true , id: true },
     topic: { type: String , ref: 'Topic' },
     parent: { type: String , ref: 'Message' },
-    author: { type: String , ref: 'Person' , populate: ['query', 'get'] },
+    author: { type: String , ref: 'Person' },
     content: { type: String },
     created: { type: Date , default: Date.now },
     reactions: {},
@@ -285,11 +347,16 @@ function reduceChannel (next, done) {
   if (message.topic && message.topic.id) {
     message.topic = message.topic.id;
   }
-  next();  
+  next();
 }
 
 var Invitation = maki.define('Invitation', {
   public: false,
+  components: {
+    masthead: 'maki-invitation-splash',
+    query: 'maki-invitation-manager',
+    get: 'maki-invitation-view',
+  },
   attributes: {
     id: { type: String , required: true , slug: true },
     from: { type: String , max: 240 , authorize: 'user' },
@@ -309,29 +376,6 @@ var Invitation = maki.define('Invitation', {
     Topic: {
       query: {},
       sort: 'id'
-    }
-  },
-  handlers: {
-    html: {
-      create: function(req, res) {
-        var invitation = this;
-        req.flash('info', '<div class="header">Check your email!</div>', '<p>An invitation has been sent to the email address you just gave us.  Join us by clicking the link in the invitation!</p>');
-        res.format({
-          json: function () {
-            res.status( 303 ).redirect('/invitations/' + invitation.id);
-          },
-          html: function () {
-            console.log('invitation http handler, create:', invitation);
-            
-            if (invitation.status == 'accepted') {
-              return res.redirect('/authentications/slack?next=/people/' + invitation.user );
-            }
-            
-            // TODO: determine why changing this to `/people` breaks messages
-            res.status( 302 ).redirect('/invitations');
-          }
-        });
-      }
     }
   },
 });
@@ -473,20 +517,11 @@ Reminder.post('create', calculateInvitationStats);
   });
 });*/
 
-maki.define('Example', {
-  attributes: {
-    name:    { type: String , max: 80 },
-    slug:    { type: String , max: 80 , id: true },
-    content: { type: String },
-    screenshot: { type: 'File' }
-  },
-  source: 'data/examples.json',
-  icon: 'idea'
-});
-
 maki.define('Release', {
   public: false,
   icon: 'tag',
+  description: 'Officially tagged releases of the Maki library.',
+  //source: 'https://api.github.com/repos/martindale/maki/releases',
   attributes: {
     name: { type: String , max: 80 },
     tag: { type: String , max: 80 },
@@ -494,7 +529,6 @@ maki.define('Release', {
     published: { type: Date },
     notes: { type: String , render: 'markdown' }
   },
-  //source: 'https://api.github.com/repos/martindale/maki/releases',
   map: function( release ) {
     return {
       name: release.name,
@@ -506,16 +540,35 @@ maki.define('Release', {
 });
 
 maki.define('Plugin', {
+  public: false,
   handle: 'Extensions',
+  icon: 'puzzle',
+  description: 'Modules that extend the default Maki behaviors.',
   attributes: {
     name: { type: String , max: 80 },
     description: { type: String },
     version: { type: String , max: 10 },
     coverage: { type: Number , default: 0 },
   },
-  icon: 'puzzle'
 });
 
+maki.define('Index', {
+  public: false,
+  name: 'Index',
+  templates: {
+    query: 'splash'
+  },
+  components: {
+    masthead: 'maki-pitch',
+    query: 'maki-splash',
+    get: 'maki-splash'
+  },
+  routes: {
+    query: '/'
+  },
+  static: true,
+  //internal: true
+});
 
 var Profile = maki.define('Profile', {
   public: false,
@@ -531,10 +584,15 @@ var Person = maki.define('Person', {
   icon: 'users',
   handle: 'Community',
   description: 'The list of people working on Maki, including all extended members of the community.',
+  masthead: null,
+  // TODO: auto-infer
+  components: {
+    masthead: 'maki-community-welcome',
+    query: 'maki-community',
+    get: 'maki-profile'
+  },
   attributes: {
-    _id: { type: String }, // TODO: remove
-    id: { type: String }, // TODO: incorporate into main library
-    username: { type: String , max: 80 , required: true , slug: true },
+    username: { type: String , max: 80 , required: true , slug: true , id: true },
     name:     {
       family: { type: String , max: 80 },
       given: { type: String , max: 80 }
@@ -632,4 +690,8 @@ var Entity = maki.define('Entity', {
 var analytics = new Analytics({ id: 'UA-57746323-2' });
 
 maki.use( analytics ).serve(['http']).start();*/
-maki.start();
+maki.start(function() {
+  //console.log('routes:', maki.routes);
+});
+
+module.exports = maki;

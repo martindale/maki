@@ -100,14 +100,13 @@ a, u {
   font-size: 1.33em;
 }
 .ui.vertical.stripe .horizontal.divider {
-  margin: 3em 0em;
-  margin-top: 2em;
+  margin: 2em 0em;
 }
 
 .content.container .ui.vertical.stripe {
   box-shadow: none;
   padding: 0;
-  padding-top: 2em;
+  margin: 2em 0;
 }
 
 .quote.stripe.segment {
@@ -138,6 +137,16 @@ a, u {
   transition: all 5s ease !important;
 }
 
+.ui.card {
+  transition: box-shadow 1s ease,
+    transform 1s ease,
+    -webkit-transform 1s ease;
+}
+
+.top-padded {
+  margin: 4em 0;
+}
+
 @media only screen and (min-width: 1200px) {
 
 }
@@ -157,7 +166,7 @@ a, u {
     /*min-height: 350px;*/
   }
   .masthead h1.ui.header {
-    font-size: 2em;
+    /*font-size: 2em;*/
     margin-top: 1.5em;
   }
   .masthead h2 {
